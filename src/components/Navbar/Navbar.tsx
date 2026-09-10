@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
-import { useTheme } from "../../context/ThemeContext";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "../../context/useTheme";
 
 const Navbar = () => {
   const { darkMode, toggleDarkMode } = useTheme();
@@ -15,48 +14,51 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/80 backdrop-blur-md dark:border-gray-800/80 dark:bg-gray-950/80">
 
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
 
         {/* Logo */}
         <a
           href="/"
           onClick={closeMenu}
-          className="group flex items-center"
+          className="group flex items-center gap-3"
         >
           <img
             src="/logo.png"
             alt="Joseph - Logo"
-            className="h-10 w-auto object-contain transition duration-300 group-hover:scale-105"
+            className="h-16 w-16 object-contain transition duration-300 group-hover:scale-105"
           />
+          <span className="hidden text-sm font-bold tracking-tight text-gray-900 dark:text-white sm:block">
+            Joseph Herreño
+          </span>
         </a>
 
         {/* MENÚ DESKTOP */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
 
           <a
             href="#about"
-            className="text-sm font-medium text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-white"
           >
-            About
+            Sobre mí
           </a>
 
           <a
             href="#skills"
-            className="text-sm font-medium text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-white"
           >
-            Skills
+            Habilidades
           </a>
 
           <a
             href="#projects"
-            className="text-sm font-medium text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-white"
           >
             Proyectos
           </a>
 
           <a
             href="#contact"
-            className="text-sm font-medium text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-white"
           >
             Contacto
           </a>
@@ -64,9 +66,9 @@ const Navbar = () => {
           <button
             onClick={toggleDarkMode}
             aria-label="Cambiar tema"
-            className="rounded-full border border-gray-200 p-2 text-lg transition duration-300 hover:scale-110 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-800"
+            className="ml-2 rounded-full border border-gray-200 p-2.5 text-gray-600 transition duration-300 hover:scale-110 hover:bg-gray-100 dark:border-gray-800 dark:text-gray-300 dark:hover:bg-gray-800"
           >
-            {darkMode ? "☀️" : "🌙"}
+            {darkMode ? <Sun size={17} /> : <Moon size={17} />}
           </button>
 
         </div>
@@ -75,7 +77,8 @@ const Navbar = () => {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="rounded-lg border border-gray-200 p-2 transition hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-800 md:hidden"
-          aria-label="Abrir menú"
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -93,7 +96,7 @@ const Navbar = () => {
               onClick={closeMenu}
               className="text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
             >
-              About
+              Sobre mí
             </a>
 
             <a
@@ -101,7 +104,7 @@ const Navbar = () => {
               onClick={closeMenu}
               className="text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
             >
-              Skills
+              Habilidades
             </a>
 
             <a
@@ -122,7 +125,7 @@ const Navbar = () => {
 
             <button
               onClick={toggleDarkMode}
-              className="w-fit rounded-lg border border-gray-200 px-4 py-2 dark:border-gray-800"
+              className="w-fit rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium dark:border-gray-800"
             >
               {darkMode ? "☀️ Modo claro" : "🌙 Modo oscuro"}
             </button>

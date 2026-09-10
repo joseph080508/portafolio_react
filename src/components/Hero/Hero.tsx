@@ -1,18 +1,18 @@
 import { motion } from "motion/react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-white text-black transition-colors duration-500 dark:bg-gray-950 dark:text-white">
+    <section className="relative flex min-h-[calc(100vh-5rem)] items-center overflow-hidden bg-white text-black transition-colors duration-500 dark:bg-gray-950 dark:text-white">
 
       {/* Fondo decorativo */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute left-1/2 top-1/4 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-500/15 blur-3xl" />
 
-        <div className="absolute right-10 top-20 h-40 w-40 rounded-full bg-purple-500/10 blur-3xl" />
+        <div className="absolute right-10 top-20 h-40 w-40 rounded-full bg-purple-500/15 blur-3xl" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-[1.1fr_0.9fr]">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-[1.05fr_0.95fr]">
 
         {/* TEXTO */}
         <div>
@@ -20,23 +20,23 @@ const Hero = () => {
           
 
           {/* Saludo */}
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-4 text-lg font-medium text-gray-500 dark:text-gray-400"
+            className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400"
           >
-            Hola, soy Joseph 
-          </motion.p>
+            Joseph Herreño · Desarrollador en formación
+          </motion.div>
 
           {/* Título */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="max-w-4xl text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl"
+            className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
           >
-            Construyo cosas para la{" "}
+            Diseño y construyo experiencias para la{" "}
             <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
               web.
             </span>
@@ -47,7 +47,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300"
+            className="mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300 md:text-xl"
           >
             Soy estudiante de Ingeniería de Sistemas y desarrollador en
             formación. Me gusta aprender nuevas tecnologías y convertir ideas
@@ -63,7 +63,7 @@ const Hero = () => {
           >
             <a
               href="#projects"
-              className="group flex items-center gap-2 rounded-xl bg-black px-6 py-3 font-medium text-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-white dark:text-black"
+              className="group flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25"
             >
               Ver proyectos
 
@@ -74,21 +74,11 @@ const Hero = () => {
             </a>
 
             <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl border border-gray-200 px-6 py-3 font-medium transition duration-300 hover:-translate-y-1 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-900"
+              href="#contact"
+              className="group flex items-center gap-2 rounded-xl border border-gray-200 px-6 py-3 font-semibold transition duration-300 hover:-translate-y-1 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-900"
             >
-              GitHub
-            </a>
-
-            <a
-              href="https://linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl border border-gray-200 px-6 py-3 font-medium transition duration-300 hover:-translate-y-1 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-900"
-            >
-              LinkedIn
+              Hablemos
+              <ArrowUpRight size={17} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </motion.div>
 
@@ -104,7 +94,7 @@ const Hero = () => {
           <motion.img
             src="/logo.png"
             alt="Logo personal"
-            className="w-full max-w-lg object-contain"
+            className="w-full max-w-lg object-contain drop-shadow-2xl"
             animate={{
               y: [0, -8, 0],
             }}
@@ -119,6 +109,11 @@ const Hero = () => {
           />
         </motion.div>
 
+      </div>
+      <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-gray-400 md:flex">
+        <span className="h-px w-8 bg-gray-300 dark:bg-gray-700" />
+        Explora mi trabajo
+        <span className="h-px w-8 bg-gray-300 dark:bg-gray-700" />
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { ArrowUpRight, Mail } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -11,10 +12,11 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true, amount: 0.2 }}
-        className="rounded-3xl border border-gray-200 bg-white p-8 text-center transition-colors duration-500 dark:border-gray-800 dark:bg-gray-900 md:p-12"
+        className="relative overflow-hidden rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-purple-50 p-8 text-center transition-colors duration-500 dark:border-blue-900/50 dark:from-blue-950/50 dark:via-gray-900 dark:to-purple-950/40 md:p-16"
       >
-        <p className="mx-auto mt-6 max-w-xl text-lg text-gray-600 dark:text-gray-300">
-          Contacto
+        <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-400/20 blur-3xl" />
+        <p className="relative mx-auto flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-300">
+          <Mail size={16} /> Contacto
         </p>
 
         <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
@@ -26,23 +28,23 @@ const Contact = () => {
           tecnología, puedes encontrarme en mis redes.
         </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="relative mt-8 flex flex-wrap justify-center gap-4">
           <a
             href="https://github.com/joseph080508"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg bg-black px-6 py-3 font-medium text-white transition hover:scale-105"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20"
           >
-            GitHub
+            GitHub <ArrowUpRight size={17} />
           </a>
 
           <a
-            href="https://www.linkedin.com/in/joseph-david-herre%C3%B1o-theran-b76261292/en/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BxgU8B%2FSyRlOPYP7QigTtGA%3D%3D"
+            href="https://www.linkedin.com/in/joseph-david-herreño-theran-b76261292"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-gray-300 px-6 py-3 font-medium transition hover:bg-gray-100"
+            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-6 py-3 font-semibold transition hover:-translate-y-0.5 hover:bg-white dark:border-gray-700 dark:hover:bg-gray-800"
           >
-            LinkedIn
+            LinkedIn <ArrowUpRight size={17} />
           </a>
         </div>
       </motion.div>

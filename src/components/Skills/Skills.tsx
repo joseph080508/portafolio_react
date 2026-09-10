@@ -1,5 +1,38 @@
 import { motion } from "motion/react";
+import { FaCss3Alt, FaHtml5, FaPython, FaReact } from "react-icons/fa";
+import {
+  SiJavascript,
+  SiMysql,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
+import type { IconType } from "react-icons";
 import { skills } from "../../data/skills";
+
+const skillIcons: Record<string, IconType> = {
+  TypeScript: SiTypescript,
+  React: FaReact,
+  "Tailwind CSS": SiTailwindcss,
+  JavaScript: SiJavascript,
+  HTML: FaHtml5,
+  CSS: FaCss3Alt,
+  Python: FaPython,
+  SQL: SiMysql,
+  "Next js": SiNextdotjs,
+};
+
+const skillColors: Record<string, string> = {
+  TypeScript: "#3178c6",
+  React: "#61dafb",
+  "Tailwind CSS": "#06b6d4",
+  JavaScript: "#f7df1e",
+  HTML: "#e34f26",
+  CSS: "#1572b6",
+  Python: "#3776ab",
+  SQL: "#4479a1",
+  "Next js": "currentColor",
+};
 
 const Skills = () => {
   return (
@@ -21,7 +54,7 @@ const Skills = () => {
           </p>
 
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
-            Mis Skills
+            Herramientas que uso
           </h2>
 
           <p className="mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
@@ -46,15 +79,23 @@ const Skills = () => {
                 y: -6,
                 scale: 1.02,
               }}
-              className="rounded-2xl border border-gray-200 bg-gray-50 p-5 transition-colors dark:border-gray-800 dark:bg-gray-900"
+              className="group rounded-2xl border border-gray-200 bg-gray-50 p-5 transition-colors hover:border-blue-200 hover:bg-blue-50/50 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900 dark:hover:bg-blue-950/20"
             >
+              {(() => {
+                const Icon = skillIcons[skill.name];
+                return (
+                  <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-2xl shadow-sm ring-1 ring-gray-200 transition-transform group-hover:scale-110 dark:bg-gray-800 dark:ring-gray-700">
+                    <Icon size={22} color={skillColors[skill.name]} />
+                  </div>
+                );
+              })()}
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {skill.name}
               </h3>
 
               <span className="mt-3 inline-block rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-sm font-medium text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
                 {skill.level}
-                </span>
+              </span>
             </motion.div>
           ))}
         </div>

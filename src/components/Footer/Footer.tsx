@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-gray-200 bg-white px-6 py-10 dark:border-gray-800 dark:bg-gray-950">
+    <footer className="border-t border-gray-200 bg-white px-6 py-12 dark:border-gray-800 dark:bg-gray-950">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -11,12 +11,12 @@ const Footer = () => {
         className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row"
       >
         <div className="text-center md:text-left">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+          <h3 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
             Joseph Herreño
           </h3>
 
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Desarrollador Junior || Estudiante de Ingeneria de Sistemas
+            Desarrollador Junior · Estudiante de Ingeniería de Sistemas
           </p>
         </div>
 
@@ -31,7 +31,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/joseph-david-herreño-theran-b76261292"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-gray-600 transition hover:text-black dark:text-gray-400 dark:hover:text-white"

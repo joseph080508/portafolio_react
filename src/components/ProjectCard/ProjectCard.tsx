@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { ArrowUpRight, GitBranch } from "lucide-react";
 import type { Project } from "../../types";
 
 interface ProjectCardProps {
@@ -12,21 +13,20 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      whileHover={{ y: -8 }}
-      className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900"
+      className="group overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-950/5 dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-900"
     >
-      {/* Preview */}
-      <div className="h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
-  <img
-    src={project.image}
-    alt={project.title}
-    className="h-full w-full object-contain bg-gray-100 transition duration-500 group-hover:scale-105 dark:bg-gray-800"
-  />
-</div>
+      <div className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800">
+        <img
+          src={project.image}
+          alt={`Vista previa de ${project.title}`}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full bg-gray-100 object-contain dark:bg-gray-800"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      </div>
 
-      {/* Contenido */}
       <div className="p-6">
-
         <h3 className="text-xl font-bold text-gray-900 dark:text-white">
           {project.title}
         </h3>
@@ -35,7 +35,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.description}
         </p>
 
-        {/* Tecnologías */}
         <div className="mt-5 flex flex-wrap gap-2">
           {project.technologies.map((technology) => (
             <span
@@ -47,16 +46,26 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           ))}
         </div>
 
-        {/* GitHub */}
-        <div className="mt-6">
+        <div className="mt-6 flex flex-wrap gap-3">
           <a
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+            className="inline-flex items-center gap-2 rounded-lg bg-gray-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-600 dark:bg-white dark:text-gray-950 dark:hover:bg-blue-400"
           >
-            Ver en GitHub
+            <GitBranch size={16} />
+            GitHub
           </a>
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-800 dark:hover:bg-blue-950/40"
+            >
+              Demo <ArrowUpRight size={16} />
+            </a>
+          )}
         </div>
 
       </div>

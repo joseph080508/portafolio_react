@@ -1,17 +1,5 @@
-const Contact = () =>{
-    return (
-        <div>
-        <section>
-            <h1>
-                Contacto
-            </h1>
-            <p>
-                Aqui contact
-            </p>
-        </section>
-         </div>
-    )
-}
+import ContactSection from "../components/Contact/Contact";
 
+const Contact = () => <ContactSection />;
 
-export default Contact()
+export default Contact;

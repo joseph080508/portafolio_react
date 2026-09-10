@@ -1,17 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import Project from "./pages/Project";
+import { RouterProvider } from "react-router";
+import { ThemeProvider } from "./context/ThemeProvider";
+import router from "./router/Router";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Project />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 
