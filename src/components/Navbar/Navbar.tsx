@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../../context/useTheme";
+import { useLanguage } from "../../context/useLanguage";
 
 const Navbar = () => {
   const { darkMode, toggleDarkMode } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,7 +27,7 @@ const Navbar = () => {
           <img
             src="/logo.png"
             alt="Joseph - Logo"
-            className="h-16 w-16 object-contain transition duration-300 group-hover:scale-105"
+            className="h-16 w-16 object-contain brightness-50 saturate-125 transition duration-300 group-hover:scale-105 dark:brightness-100 dark:saturate-100"
           />
           <span className="hidden text-sm font-bold tracking-tight text-gray-900 dark:text-white sm:block">
             Joseph Herreño
@@ -39,33 +41,50 @@ const Navbar = () => {
             href="#about"
             className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-white"
           >
-            Sobre mí
+            {t("nav.about")}
           </a>
 
           <a
             href="#skills"
             className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-white"
           >
-            Habilidades
+            {t("nav.skills")}
           </a>
 
           <a
             href="#projects"
             className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-white"
           >
-            Proyectos
+            {t("nav.projects")}
           </a>
 
           <a
             href="#contact"
             className="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-black dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-white"
           >
-            Contacto
+            {t("nav.contact")}
           </a>
+
+          <div className="ml-2 flex items-center rounded-full border border-gray-200 p-1 dark:border-gray-800">
+            <button
+              onClick={() => setLanguage("en")}
+              className={`rounded-full px-2 py-1 text-xs font-semibold transition ${language === "en" ? "bg-gray-900 text-white dark:bg-white dark:text-gray-950" : "text-gray-600 dark:text-gray-300"}`}
+              aria-label="English"
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLanguage("es")}
+              className={`rounded-full px-2 py-1 text-xs font-semibold transition ${language === "es" ? "bg-gray-900 text-white dark:bg-white dark:text-gray-950" : "text-gray-600 dark:text-gray-300"}`}
+              aria-label="Español"
+            >
+              ES
+            </button>
+          </div>
 
           <button
             onClick={toggleDarkMode}
-            aria-label="Cambiar tema"
+            aria-label={t("nav.language")}
             className="ml-2 rounded-full border border-gray-200 p-2.5 text-gray-600 transition duration-300 hover:scale-110 hover:bg-gray-100 dark:border-gray-800 dark:text-gray-300 dark:hover:bg-gray-800"
           >
             {darkMode ? <Sun size={17} /> : <Moon size={17} />}
@@ -96,7 +115,7 @@ const Navbar = () => {
               onClick={closeMenu}
               className="text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
             >
-              Sobre mí
+              {t("nav.about")}
             </a>
 
             <a
@@ -104,7 +123,7 @@ const Navbar = () => {
               onClick={closeMenu}
               className="text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
             >
-              Habilidades
+              {t("nav.skills")}
             </a>
 
             <a
@@ -112,7 +131,7 @@ const Navbar = () => {
               onClick={closeMenu}
               className="text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
             >
-              Proyectos
+              {t("nav.projects")}
             </a>
 
             <a
@@ -120,14 +139,29 @@ const Navbar = () => {
               onClick={closeMenu}
               className="text-gray-600 transition hover:text-black dark:text-gray-300 dark:hover:text-white"
             >
-              Contacto
+              {t("nav.contact")}
             </a>
+
+            <div className="flex w-fit items-center rounded-full border border-gray-200 p-1 dark:border-gray-800">
+              <button
+                onClick={() => { setLanguage("en"); closeMenu(); }}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${language === "en" ? "bg-gray-900 text-white dark:bg-white dark:text-gray-950" : "text-gray-600 dark:text-gray-300"}`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => { setLanguage("es"); closeMenu(); }}
+                className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${language === "es" ? "bg-gray-900 text-white dark:bg-white dark:text-gray-950" : "text-gray-600 dark:text-gray-300"}`}
+              >
+                ES
+              </button>
+            </div>
 
             <button
               onClick={toggleDarkMode}
               className="w-fit rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium dark:border-gray-800"
             >
-              {darkMode ? "☀️ Modo claro" : "🌙 Modo oscuro"}
+              {darkMode ? "☀️ " + t("theme.light") : "🌙 " + t("theme.dark")}
             </button>
 
           </div>

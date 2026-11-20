@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
+import { useLanguage } from "../../context/useLanguage";
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="border-t border-gray-200 bg-white px-6 py-12 dark:border-gray-800 dark:bg-gray-950">
       <motion.div
@@ -16,7 +18,7 @@ const Footer = () => {
           </h3>
 
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Desarrollador Junior · Estudiante de Ingeniería de Sistemas
+            {t("footer.role")}
           </p>
         </div>
 
@@ -27,7 +29,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-sm font-medium text-gray-600 transition hover:text-black dark:text-gray-400 dark:hover:text-white"
           >
-            GitHub
+            {t("footer.github")}
           </a>
 
           <a
@@ -36,15 +38,19 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-sm font-medium text-gray-600 transition hover:text-black dark:text-gray-400 dark:hover:text-white"
           >
-            LinkedIn
+            {t("footer.linkedin")}
           </a>
         </div>
       </motion.div>
 
+      <div className="mx-auto mt-6 flex max-w-6xl items-center justify-center gap-2 text-xs font-medium text-gray-400 dark:text-gray-500">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+        {t("footer.crafted")}
+      </div>
+
       <div className="mx-auto mt-8 max-w-6xl border-t border-gray-200 pt-6 text-center dark:border-gray-800">
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          © {new Date().getFullYear()} Joseph Herreño. Todos los derechos
-          reservados.
+          {t("footer.copyright").replace("{year}", String(new Date().getFullYear()))}
         </p>
       </div>
     </footer>

@@ -11,4 +11,23 @@ export interface Project {
   github: string;
   demo?: string;
   image: string;
+  problem?: string;
+  objective?: string;
+  features?: string[];
+  architecture?: string[];
+  challenges?: string[];
+  solutions?: string[];
+  learnings?: string[];
+  gallery?: string[];
+  en?: {
+    title?: string;
+    description?: string;
+    problem?: string;
+    objective?: string;
+    features?: string[];
+    architecture?: string[];
+    challenges?: string[];
+    solutions?: string[];
+    learnings?: string[];
+  };
 }

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { FaCss3Alt, FaHtml5, FaPython, FaReact } from "react-icons/fa";
+import { FaAws, FaCss3Alt, FaHtml5, FaPython, FaReact } from "react-icons/fa";
 import {
   SiJavascript,
   SiMysql,
@@ -9,6 +9,10 @@ import {
 } from "react-icons/si";
 import type { IconType } from "react-icons";
 import { skills } from "../../data/skills";
+import BlurText from "../BlurText/BlurText";
+import { useLanguage } from "../../context/useLanguage";
+import { Suspense, lazy } from "react";
+const TechConstellation = lazy(() => import("../TechConstellation/TechConstellation"));
 
 const skillIcons: Record<string, IconType> = {
   TypeScript: SiTypescript,
@@ -19,7 +23,8 @@ const skillIcons: Record<string, IconType> = {
   CSS: FaCss3Alt,
   Python: FaPython,
   SQL: SiMysql,
-  "Next js": SiNextdotjs,
+  "Next.js": SiNextdotjs,
+  AWS: FaAws,
 };
 
 const skillColors: Record<string, string> = {
@@ -31,10 +36,12 @@ const skillColors: Record<string, string> = {
   CSS: "#1572b6",
   Python: "#3776ab",
   SQL: "#4479a1",
-  "Next js": "currentColor",
+  "Next.js": "currentColor",
+  AWS: "#ff9900",
 };
 
 const Skills = () => {
+  const { t } = useLanguage();
   return (
     <section
       id="skills"
@@ -50,16 +57,15 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
-            Tecnologías
+            {t("skills.eyebrow")}
           </p>
 
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
-            Herramientas que uso
+            <BlurText text={t("skills.title")} delay={0.1} />
           </h2>
 
           <p className="mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            Tecnologías y herramientas que he aprendido y que sigo
-            desarrollando.
+            {t("skills.subtitle")}
           </p>
         </motion.div>
 
@@ -94,10 +100,16 @@ const Skills = () => {
               </h3>
 
               <span className="mt-3 inline-block rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-sm font-medium text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
-                {skill.level}
+                {skill.level === "Avanzado" ? t("levels.advanced") : t("levels.intermediate")}
               </span>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-12">
+          <Suspense fallback={null}>
+            <TechConstellation />
+          </Suspense>
         </div>
 
       </div>

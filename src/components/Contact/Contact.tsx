@@ -1,7 +1,11 @@
 import { motion } from "motion/react";
+import { useLanguage } from "../../context/useLanguage";
 import { ArrowUpRight, Mail } from "lucide-react";
+import BlurText from "../BlurText/BlurText";
+import Magnetic from "../Magnetic/Magnetic";
 
 const Contact = () => {
+  const { t } = useLanguage();
   return (
     <section
       id="contact"
@@ -16,36 +20,39 @@ const Contact = () => {
       >
         <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-400/20 blur-3xl" />
         <p className="relative mx-auto flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-300">
-          <Mail size={16} /> Contacto
+          <Mail size={16} /> {t("contact.eyebrow")}
         </p>
 
         <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-          ¿Hablamos?
+          <BlurText text={t("contact.title")} delay={0.1} />
         </h2>
 
         <p className="mx-auto mt-6 max-w-xl text-lg text-gray-600 dark:text-gray-300">
-          Si quieres conocer más sobre mis proyectos o simplemente hablar de
-          tecnología, puedes encontrarme en mis redes.
+          {t("contact.subtitle")}
         </p>
 
         <div className="relative mt-8 flex flex-wrap justify-center gap-4">
-          <a
-            href="https://github.com/joseph080508"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20"
-          >
-            GitHub <ArrowUpRight size={17} />
-          </a>
+          <Magnetic>
+            <a
+              href="https://github.com/joseph080508"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20"
+            >
+              {t("contact.github")} <ArrowUpRight size={17} />
+            </a>
+          </Magnetic>
 
-          <a
-            href="https://www.linkedin.com/in/joseph-david-herreño-theran-b76261292"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-6 py-3 font-semibold transition hover:-translate-y-0.5 hover:bg-white dark:border-gray-700 dark:hover:bg-gray-800"
-          >
-            LinkedIn <ArrowUpRight size={17} />
-          </a>
+          <Magnetic>
+            <a
+              href="https://www.linkedin.com/in/joseph-david-herreño-theran-b76261292"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-6 py-3 font-semibold transition hover:-translate-y-0.5 hover:bg-white dark:border-gray-700 dark:hover:bg-gray-800"
+            >
+              {t("contact.linkedin")} <ArrowUpRight size={17} />
+            </a>
+          </Magnetic>
         </div>
       </motion.div>
     </section>

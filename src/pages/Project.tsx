@@ -1,10 +1,16 @@
 import { motion } from "motion/react";
 import { projects } from "../data/project";
 import ProjectCard from "../components/ProjectCard/ProjectCard";
+import SEO from "../components/SEO/SEO";
+import KineticText from "../components/KineticText/KineticText";
+import { useLanguage } from "../context/useLanguage";
 
 const Projects = () => {
+  const { t } = useLanguage();
   return (
-    <section
+    <>
+      <SEO title={t("seo.projectsTitle")} description={t("seo.projectsDescription")} />
+      <section
       id="projects"
       className="bg-gray-50 px-6 py-28 dark:bg-gray-900"
     >
@@ -17,16 +23,15 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-500">
-            Proyectos
+            {t("projects.eyebrow")}
           </p>
 
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
-            Lo que he construido
+            <KineticText text={t("projects.title")} />
           </h2>
 
           <p className="mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            Algunos proyectos en los que he trabajado mientras sigo
-            aprendiendo y mejorando mis habilidades.
+            {t("projects.subtitle")}
           </p>
         </motion.div>
 
@@ -41,6 +46,7 @@ const Projects = () => {
 
       </div>
     </section>
+    </>
   );
 };
 

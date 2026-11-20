@@ -1,9 +1,20 @@
+import { Suspense, lazy } from "react";
+import { useLanguage } from "../../context/useLanguage";
+import BlurText from "../BlurText/BlurText";
+import Magnetic from "../Magnetic/Magnetic";
 import { motion } from "motion/react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 
+const HeroScene = lazy(() => import("./HeroScene"));
+
 const Hero = () => {
+  const { t } = useLanguage();
   return (
     <section className="relative flex min-h-[calc(100vh-5rem)] items-center overflow-hidden bg-white text-black transition-colors duration-500 dark:bg-gray-950 dark:text-white">
+
+      <Suspense fallback={null}>
+        <HeroScene />
+      </Suspense>
 
       {/* Fondo decorativo */}
       <div className="absolute inset-0 -z-10">
@@ -26,7 +37,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400"
           >
-            Joseph Herreño · Desarrollador en formación
+            {t("hero.greeting")}
           </motion.div>
 
           {/* Título */}
@@ -36,9 +47,10 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
           >
-            Diseño y construyo experiencias para la{" "}
+            <BlurText text={t("hero.title1")} delay={0.2} />
+            {" "}
             <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              web.
+              <BlurText text={t("hero.title2")} delay={0.5} />
             </span>
           </motion.h1>
 
@@ -49,9 +61,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300 md:text-xl"
           >
-            Soy estudiante de Ingeniería de Sistemas y desarrollador en
-            formación. Me gusta aprender nuevas tecnologías y convertir ideas
-            en soluciones funcionales.
+            {t("hero.description")}
           </motion.p>
 
           {/* BOTONES */}
@@ -61,25 +71,29 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-8 flex flex-wrap gap-4"
           >
-            <a
-              href="#projects"
-              className="group flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25"
-            >
-              Ver proyectos
+            <Magnetic>
+              <a
+                href="#projects"
+                className="group flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/25"
+              >
+                {t("hero.projects")}
 
-              <ArrowDown
-                size={18}
-                className="transition-transform duration-300 group-hover:translate-y-1"
-              />
-            </a>
+                <ArrowDown
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-y-1"
+                />
+              </a>
+            </Magnetic>
 
-            <a
-              href="#contact"
-              className="group flex items-center gap-2 rounded-xl border border-gray-200 px-6 py-3 font-semibold transition duration-300 hover:-translate-y-1 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-900"
-            >
-              Hablemos
-              <ArrowUpRight size={17} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="group flex items-center gap-2 rounded-xl border border-gray-200 px-6 py-3 font-semibold transition duration-300 hover:-translate-y-1 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-900"
+              >
+                {t("hero.contact")}
+                <ArrowUpRight size={17} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </Magnetic>
           </motion.div>
 
         </div>
@@ -94,7 +108,7 @@ const Hero = () => {
           <motion.img
             src="/logo.png"
             alt="Logo personal"
-            className="w-full max-w-lg object-contain drop-shadow-2xl"
+            className="w-full max-w-lg object-contain brightness-50 saturate-125 drop-shadow-2xl transition duration-300 dark:brightness-100 dark:saturate-100"
             animate={{
               y: [0, -8, 0],
             }}
@@ -112,7 +126,7 @@ const Hero = () => {
       </div>
       <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-gray-400 md:flex">
         <span className="h-px w-8 bg-gray-300 dark:bg-gray-700" />
-        Explora mi trabajo
+        {t("hero.explore")}
         <span className="h-px w-8 bg-gray-300 dark:bg-gray-700" />
       </div>
     </section>

@@ -3,16 +3,16 @@ import type { Skill } from "../types";
 export const skills: Skill[]= [
     {
         name: "TypeScript",
-        level: "Aprendiendo"
+        level: "Intermedio"
 
     },
     {
         name:"React",
-        level:"Aprendiendo"
+        level:"Intermedio"
     },
     {
         name:"Tailwind CSS",
-        level:"Aprendiendo"
+        level:"Intermedio"
     },
     {
         name:"JavaScript",
@@ -20,11 +20,11 @@ export const skills: Skill[]= [
     },
     {
         name:"HTML",
-        level:"Intermedio"
+        level:"Avanzado"
     },
     {
         name:"CSS",
-        level: "Intermedio"
+        level: "Avanzado"
     },
     {
         name: "Python",
@@ -35,9 +35,11 @@ export const skills: Skill[]= [
         level: "Intermedio"
     },
     {
-        name: "Next js",
-        level: "Aprendiendo"
+        name: "Next.js",
+        level: "Intermedio"
+    },
+    {
+        name: "AWS",
+        level: "Intermedio"
     }
 ]
-
-
